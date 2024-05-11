@@ -1,0 +1,136 @@
+<!-- detail.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %> | <%= game.nama_game%></title>
+</head>
+<body data-bs-theme="dark">
+    <%-include('layouts');%>
+
+
+    <div class="container mt-5">
+
+
+
+        <div class="row border border-1">
+            <div class="col-lg-5 border border-2 border-danger">
+                <div class="card mt-1 border-0 shadow-sm mx-auto" style="width: 13rem;">
+                    <img src="<%= game.gambar %>" class="card-img-top mt-1 img-thumbnail" alt="...">
+                </div>
+                <h1 class="badge fs-3"><%= game.nama_game %></h1>
+
+                <div class="d-grid gap-2 d-md-flex justify-content-center">
+                    <button class="btn btn-light me-md-2" type="button">pembayaran yang aman</button>
+                    <button class="btn btn-light" type="button">Layanan Pelanggan 24/7</button>
+                </div>  
+
+                <hr>
+
+                <p><%= game.description %></p>
+                <div class="d-grid gap-2 d-md-flex justify-content-center">
+
+                    <a href="<%= game.link_playstore %>" target="_blank">
+                        <img src="/img/other/app_store_coda.png" alt="">
+                    </a>
+
+                    <a href="<%= game.link_appstore %>" target="_blank">
+                        <img src="/img/other/google_play_coda.png" alt="">
+                    </a>
+                </div>
+            </div>
+
+            <div class="ms-auto col-lg-6 border border-2 border-primary">
+                <div class="accordion" id="accordionPanelsStayOpenExample">
+                    <div class="accordion-item">
+                      <h2 class="accordion-header">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                          Masukkan Player ID
+                        </button>
+                      </h2>
+                      <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
+                        <div class="accordion-body">
+                            <div class="form-floating mb-3">
+                                <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" required>
+                                <label for="floatingInput">Masukkan Player ID</label>
+                                <small class="text-warning">*) Bagian ini harus diisi
+                                </small>
+                            </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#topUpOptions" aria-expanded="false" aria-controls="topUpOptions">
+                                Pilih Nominal Top Up
+                            </button>
+                        </h2>
+                        <div id="topUpOptions" class="accordion-collapse collapse">
+                            <div class="accordion-body">
+                                <!-- Looping through each option -->
+                                <% game.opsi_nominal_topup.forEach((option, index) => { %>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="topUpOption" id="topUpOption<%= index + 1 %>" value="<%= option.nominal %>">
+                                        <label class="form-check-label" for="topUpOption<%= index + 1 %>">
+                                            <%= option.nominal %> - <%= option.harga %>
+                                        </label>
+                                    </div>
+                                <% }); %>
+                            </div>
+                        </div>
+                    </div>
+                    
+
+                    <div class="accordion-item">
+                      <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
+                            Pilih pembayaran
+                        </button>
+                      </h2>
+                      <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse">
+                        <div class="accordion-body">
+
+                            <div class="list-group">
+                                <button type="button" class="list-group-item list-group-item-action active" aria-current="true"><img src="/img/other/OVO_LOGO.png" alt=""></button>
+                                <button type="button" class="list-group-item list-group-item-action"><img src="/img/other/GOPAY_LOGO.png" alt=""></button>
+                                <button type="button" class="list-group-item list-group-item-action"><img src="/img/other/DANA_LOGO.png" alt=""></button>
+                              </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="accordion-item">
+                      <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseFour" aria-expanded="false" aria-controls="panelsStayOpen-collapseFour">
+                          Beli
+                        </button>
+                      </h2>
+                      <div id="panelsStayOpen-collapseFour" class="accordion-collapse collapse">
+                        <div class="accordion-body">
+                            <p>
+                                Opsional: Jika anda ingin mendapatkan bukti pembayaran atas pembelian anda, harap mengisi alamat emailnya Coda Rewards sebesar 3% yang terkirim akan di notify ke email kamu
+                            </p>
+
+                            <div class="form-floating mb-3">
+                                <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" required>
+                                <label for="floatingInput">Masukkan Alamat E-Mail</label>
+                                <small class="text-warning">*) Bagian ini opsional
+                                </small>
+
+                            </div>
+
+                            <div class="text-end">
+                                <button class="btn btn-primary rounded-pill">Beli Sekarang</button>
+                            </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+            </div>
+        </div>
+    </div>
+    <!-- Tampilkan detail lainnya tentang game -->
+</body>
+</html>

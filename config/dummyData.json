@@ -1,0 +1,61 @@
+[
+  {
+      "id": 1,
+      "nama_game": "Clash Royale",
+      "gambar": "/img/games/image_94.jpg",
+      "description": "Codashop menawarkan top up Clash Royale yang mudah, aman, dan instan. Pembayaran tersedia melalui pulsa (Telkomsel, Indosat, Tri, XL, Smartfren), Codacash, QRIS, GoPay, OVO, DANA, ShopeePay, LinkAja, Krevido, Alfamart,Indomaret, DOKU, Bank Transfer and Card Payments. Top up hanya dalam hitungan detik! Cukup masukan User ID dan Zone ID Anda, pilih jumlah  yang Anda inginkan, selesaikan pembayaran, dan hasil top up akan secara langsung ditambahkan ke akun Clash Royale Anda.",
+      "link_playstore": "https://play.google.com/store/apps/details?id=com.supercell.clashroyale",
+      "link_appstore": "https://apps.apple.com/us/app/clash-royale/id1053012308",
+      "opsi_nominal_topup":[
+        {"nominal": "100 Gems", "harga": "Rp 10.000"},
+        {"nominal": "400 Gems", "harga": "Rp 20.000"},
+        {"nominal": "800 Gems", "harga": "Rp 50.000"},
+        {"nominal": "1200 Gems", "harga": "Rp 98.000"}
+      ]
+
+
+  },
+  {
+      "id": 2,
+      "nama_game": "Clash Of Clans",
+      "gambar": "/img/games/image_96.jpg",
+      "description": "Beli COC Gold Pass & Gems dengan instan dan dapatkan bonus hingga 1,400 Gems di Codashop.Tanpa perlu registrasi ataupun login. Bayarlah menggunakan Codacash, QRIS, GoPay, OVO, DANA, Bank Transfer, Telkomsel, Indosat, Tri, XL, Smartfren, ShopeePay, LinkAja, Kredivo, Alfamart, Indomaret, DOKU, atau kartu kredit.Cukup masukkan tag akun Clash of Clans kamu, pilih item topup, lengkapi pembayaran dan topup akan dikirim secara instan ke akun Clash of Clans kamu",
+      "link_playstore": "https://play.google.com/store/apps/details?id=com.supercell.clashofclans",
+      "link_appstore": "https://apps.apple.com/us/app/clash-of-clans/id529479190",
+      "opsi_nominal_topup": 
+      [
+          {"nominal": "100 Gems", "harga": "Rp 10.000"},
+          {"nominal": "200 Gems", "harga": "Rp 20.000"},
+          {"nominal": "500 Gems", "harga": "Rp 50.000"},
+          {"nominal": "1000 Gems", "harga": "Rp 100.000"}
+      ]
+  },
+  {
+      "id": 3,
+      "nama_game": "PUBG Mobile",
+      "gambar": "/img/games/image_92.jpg",
+      "description": "Top up PUBG Mobile dengan mudah, aman dan nyaman hanya di Codashop.Pembayaran tersedia melalui Codacash,QRIS, GoPay, OVO, DANA, Indosat, Tri, XL, Smartfren, ShopeePay, LinkAja, Krevido, Alfamart, Indomaret, DOKU, Bank Transfer,dan kartu kredit.Belajar cara redeem kode voucher PUBG Mobile UC di siniCukup dengan memilih voucher PUBG Mobile yang kamu inginkan, selesaikan pembayaran, dan kamu akan mendapatkan kode vouchernya di halaman konfirmasi pembelian, juga melalui email ataupun lewat SMS.",
+      "link_playstore": "https://play.google.com/store/apps/details?id=com.tencent.ig",
+      "link_appstore": "https://apps.apple.com/us/app/pubg-mobile-3rd-anniversary/id1330123889",
+      "opsi_nominal_topup":[
+        {"nominal": "60 UC", "harga": "Rp 15.700"},
+        {"nominal": "325 UC", "harga": "Rp 78.000"},
+        {"nominal": "660 UC", "harga": "Rp 157.000"},
+        {"nominal": "1800 UC", "harga": "Rp 392.000"}
+      ]
+  },
+  {
+      "id": 4,
+      "nama_game": "Call Of Duty: Mobile",
+      "gambar": "/img/games/image_87.jpg",
+      "description": "*Jumlah CP tertera sudah ditambah dengan bonus hingga 45% Top up CP CODM hanya dalam hitungan detik! Cukup masukan User ID COD Mobile Anda, pilih jumlah CP yang Anda inginkan, selesaikan pembayaran, dan CP CODM akan secara instan ditambahkan ke akun CODM Anda.Bayarlah pakai QRIS, GoPay, OVO, Bank Transfer, Indosat, Tri Indonesia, XL Axiata, Smartfren, DANA, Shopee Pay, LinkAja, Kredivo, Alfamart, Indomaret, Codacash, DOKU, dan kartu kredit. Tanpa perlu kartu kredit, registrasi ataupun log-in.Unduh dan mainkan Call of Duty Mobile sekarang!",
+      "link_playstore": "https://play.google.com/store/apps/details?id=com.activision.callofduty.shooter",
+      "link_appstore": "https://apps.apple.com/us/app/call-of-duty-mobile/id1287282214",
+      "opsi_nominal_topup":[
+        {"nominal": "31 CP", "harga": "Rp 4.505"},
+        {"nominal": "63 CP", "harga": "Rp 9.008"},
+        {"nominal": "128 CP", "harga": "Rp 18.018"},
+        {"nominal": "321 CP", "harga": "Rp 45.045"}
+      ]
+  }
+]
