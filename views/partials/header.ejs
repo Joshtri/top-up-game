@@ -2,72 +2,198 @@
     <div class="container-fluid">
      
         <div class="me-auto">
-            <button class="navbar-toggler me-auto ms-5" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
+            <button class="navbar-toggler me-auto ms-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <a class="mx-3 navbar-brand fw-bold" href="/">Delta Store | </a><span class="small text-light">membuat anda top-up lebih semangat</span>
+            <a class="mx-1 navbar-brand fw-bold" href="/">| Delta Store</a>
+            <img src="/img/delta_store.png" style="width: 50px; height: 40px;" alt="">
         </div>
       <div class="offcanvas offcanvas-start text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
-        <div class="offcanvas-header">
-          <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Daftar Delta Store Sekarang!</h5>
-          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-        </div>
-        <hr>
-        <div class="offcanvas-body mt-5">
-          <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-            
-            <li class="nav-item mb-3">
-                <div class="d-flex align-items-center">
-                    <span class="me-2">
-                        <i class="fa-solid fa-percent fa-bounce fs-3" style="color: #74C0FC;"></i>
-                    </span>
-                    <div>
-                        <p class="mb-0" style="font-size: 1.1rem;">Jadilah yang pertama mengetahui promo dan penawaran ekslusif!</p>
-                        <!-- <p class="text-muted">Dapatkan informasi terbaru langsung di kotak masuk email Anda.</p> -->
-                    </div>
-                </div>
-            </li>
 
-            <li class="nav-item mb-3">
-                <div class="d-flex align-items-center">
-                    <span class="me-2">
-                        <i class="fa-solid fa-clock-rotate-left fa-spin fa-spin-reverse fs-3" style="color: #B197FC;"></i>
-                    </span>
-                    <div>
-                        <p class="mb-0" style="font-size: 1.1rem;">Akses riwayat pesanan anda dengan mudah</p>
-                        <!-- <p class="text-muted">Dapatkan informasi terbaru langsung di kotak masuk email Anda.</p> -->
-                    </div>
-                </div>
-            </li>
-
-            <li class="nav-item mb-3">
-                <div class="d-flex align-items-center">
-                    <span class="me-2">
-                        <i class="fa-solid fa-shield-halved fa-beat fs-3" style="color: #d1668b;"></i>
-                    </span>
-                    <div>
-                        <p class="mb-0" style="font-size: 1.1rem;">Lebih cepat dan aman</p>
-                        <!-- <p class="text-muted">Dapatkan informasi terbaru langsung di kotak masuk email Anda.</p> -->
-                    </div>
-                </div>
-            </li>
-
+        <% if(session && session.user) { %>
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Sudah Login !</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
             <hr>
-            <li class="nav-item mt-4">
-                <div class="d-grid gap-2 col-7 mx-auto">
-                    <button class="btn btn-light" type="button">Daftar sekarang, gratis</button>
-                    <button class="btn btn-warning" type="button">Masuk</button>
+            
+            <div class="offcanvas-body mt-5">
+                <!-- Card Profil -->
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center">
+                            <!-- Foto Profil -->
+                            <img src="https://via.placeholder.com/50" class="rounded-circle me-3" height="50" width="50" alt="Foto Profil">
+            
+                            <!-- Pesan Sapaan -->
+                            <div>
+                                <% if (session && session.user) { %>
+                                    <h5 class="card-title">Hai, <%= session.user.name %>!</h5>
+                                    <p class="fw-light mb-0">Selamat datang kembali! <br><small class="text-muted">telah bergabung pada {tgl}</small></p>
+                                <% }  %>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </li>
-          </ul>
-          <!-- <form class="d-flex mt-3" role="search">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-success" type="submit">Search</button>
-          </form> -->   
-        </div>
+
+
+
+                <!-- Menu Navigasi Profil -->
+                <ul class="navbar-nav justify-content-end flex-grow-1 pe-3 mt-3">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/rewards">Rewards</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/transaction-history">Riwayat Transaksi</a>
+                    </li>
+                    <li class="nav-item">
+                        <button class="btn btn-danger" type="button" onclick="logout()">Keluar</button>
+                    </li>
+                </ul>
+            </div>
+            
+            
+            
+ 
+        <% } else { %>
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Daftar Delta Store Sekarang!</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <hr>
+
+            <div class="offcanvas-body mt-5">
+            <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                
+                <li class="nav-item mb-3">
+                    <div class="d-flex align-items-center">
+                        <span class="me-2">
+                            <i class="fa-solid fa-percent fa-bounce fs-3" style="color: #74C0FC;"></i>
+                        </span>
+                        <div>
+                            <p class="mb-0" style="font-size: 1.1rem;">Jadilah yang pertama mengetahui promo dan penawaran ekslusif!</p>
+                            <!-- <p class="text-muted">Dapatkan informasi terbaru langsung di kotak masuk email Anda.</p> -->
+                        </div>
+                    </div>
+                </li>
+
+                <li class="nav-item mb-3">
+                    <div class="d-flex align-items-center">
+                        <span class="me-2">
+                            <i class="fa-solid fa-clock-rotate-left fa-spin fa-spin-reverse fs-3" style="color: #B197FC;"></i>
+                        </span>
+                        <div>
+                            <p class="mb-0" style="font-size: 1.1rem;">Akses riwayat pesanan anda dengan mudah</p>
+                            <!-- <p class="text-muted">Dapatkan informasi terbaru langsung di kotak masuk email Anda.</p> -->
+                        </div>
+                    </div>
+                </li>
+
+                <li class="nav-item mb-3">
+                    <div class="d-flex align-items-center">
+                        <span class="me-2">
+                            <i class="fa-solid fa-shield-halved fa-beat fs-3" style="color: #d1668b;"></i>
+                        </span>
+                        <div>
+                            <p class="mb-0" style="font-size: 1.1rem;">Lebih cepat dan aman</p>
+                            <!-- <p class="text-muted">Dapatkan informasi terbaru langsung di kotak masuk email Anda.</p> -->
+                        </div>
+                    </div>
+                </li>
+
+                <hr>
+                <% if (session && session.user) { %>
+                    <!-- Pengguna sudah login, tidak menampilkan tombol "Daftar" -->
+                <% } else { %>
+                    <!-- Pengguna belum login, tampilkan tombol "Daftar" -->
+                    <li class="nav-item mt-4">
+                        <div class="d-grid gap-2 col-7 mx-auto">
+                            <a class="btn btn-light" href="/sign-up">Daftar sekarang, gratis</a>
+                            <button id="masukButton" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#staticBackdrop" type="button">Masuk</button>
+                        </div>
+                    </li>
+                <% } %>
+            </ul>
+            <!-- <form class="d-flex mt-3" role="search">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-success" type="submit">Search</button>
+            </form> -->   
+            </div>
+        <% } %>
+
+        
+
       </div>
 
-      <button class="btn btn-light rounded-pill"><span class="badge text-dark">Daftar</span></button>
+      <style>
+        .start-75 {
+            left: 75% !important
+        }
+
+      </style>
+        <% if(session && session.user) { %>
+        <li class="nav-item dropdown list-unstyled mx-2">
+            <button type="button" class="btn position-relative" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+
+                    <i class="fa-solid fa-bell fa-shake" style="color: #6d92e8; font-size: 25px;"></i>
+                    <span class="position-absolute top-0 start-75 translate-middle p-2">
+                        <i class="fas fa-circle text-danger" style="font-size: 10px;"></i>
+                    </span>
+
+            </button>
+
+            <ul class="dropdown-menu dropdown-menu-end shadow-lg mt-4" style="width: 600px; max-width: 90vw;">
+                <div class="card border-0">
+                    <div class="card-body">
+                        <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
+                            <div class="d-flex w-100 justify-content-between">
+                              <h5 class="mb-1">Greeting Card</h5>
+                              <!-- <small>3 days ago</small> -->
+                            </div>
+                            <p class="mb-1">Selamat datang di Delta Store, selamat berbelanja.</p>
+                            <!-- <small>And some small print.</small> -->
+                        </a>
+                    </div>
+                </div>
+            </ul>
+        </li>
+        <% } %>
+    
+
+      <% if(session && session.user) { %>
+        <div class="d-flex">
+            <li class="nav-item dropdown list-unstyled">
+                <a class="nav-link dropdown-toggle text-white fw-bold" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <img src="/img/other/coin-1.png" class="rounded-circle" height="30" width="30" alt="">
+                </a>  
+                <ul class="dropdown-menu dropdown-menu-end shadow-lg mt-4" style="width: 600px; max-width: 90vw;">
+                    <div class="card border-0">
+                        <div class="card-body">
+                            <h5 class="card-title">Rewards & Dompet</h5>
+                            <div class="list-group">
+                                <button type="button" class="fw-bold text-dark list-group-item list-group-item-action active bg-warning" aria-current="true">
+                                    <i class="fa-solid fa-money-bill-1-wave fa-bounce" style="color: #e56161;"></i>
+
+                                  Jumlah Reward<span class="mx-1 badge text-bg-success">AKTIF</span>
+                                </button>
+                                <button type="button" class="list-group-item list-group-item-action"><span class="fw-bold fs-4 me-2">0</span >(Senilai Rp.0)</button>
+                            </div>
+                        </div>
+                    </div>
+                </ul>
+            </li>
+        </div>
+        
+
+        
+        
+
+      <% } else { %>
+        <a class="btn btn-light rounded-pill" href="/sign-up"><span class="badge text-dark">Daftar</span></a>
+        <% } %>
     </div>
+
+
+
 </nav>

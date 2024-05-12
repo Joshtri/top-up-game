@@ -9,14 +9,21 @@
     "dev": "nodemon index.js"
   },
   "dependencies": {
+    "bcrypt": "^5.1.1",
     "body-parser": "^1.20.2",
+    "connect-redis": "^7.1.1",
+    "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "ejs": "^3.1.10",
     "express": "^4.19.2",
+    "express-session": "^1.18.0",
+    "nodemailer": "^6.9.13",
     "nodemon": "^3.1.0",
     "path": "^0.12.7",
     "pg": "^8.11.5",
-    "sequelize": "^6.37.3"
+    "redis": "^4.6.13",
+    "sequelize": "^6.37.3",
+    "sequelize-cli": "^6.6.2"
   },
   "devDependencies": {
     "@eslint/js": "^9.2.0",

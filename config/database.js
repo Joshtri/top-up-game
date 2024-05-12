@@ -1,5 +1,5 @@
 import { Sequelize } from 'sequelize';
-import 'dotenv/config';
+    import 'dotenv/config';
 
 // Mengambil nilai variabel lingkungan dari file .env
 const {
@@ -19,5 +19,15 @@ const sequelize = new Sequelize({
     password: POSTGRES_PASSWORD,
     database: POSTGRES_DATABASE
 });
+
+// Menguji koneksi ke database
+sequelize
+    .authenticate()
+    .then(() => {
+        console.log('Koneksi database berhasil.');
+    })
+    .catch(err => {
+        console.error('Tidak dapat terhubung ke database:', err);
+    });
 
 export default sequelize;

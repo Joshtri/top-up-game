@@ -5,8 +5,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= title %> | <%= game.nama_game%></title>
+    <link rel="icon" href="/img/delta_store.png" />
 </head>
 <body data-bs-theme="dark">
+    <style>
+        .list-group-item input[type="radio"] {
+        display: none; /* Sembunyikan bulatan radio */
+        }
+
+        .list-group-item {
+        cursor: pointer; /* Ganti kursor saat dihover untuk memberikan umpan balik */
+        }
+
+    </style>
     <%-include('layouts');%>
 
 
@@ -14,8 +25,8 @@
 
 
 
-        <div class="row border border-1">
-            <div class="col-lg-5 border border-2 border-danger">
+        <div class="row ">
+            <div class="col-lg-5 ">
                 <div class="card mt-1 border-0 shadow-sm mx-auto" style="width: 13rem;">
                     <img src="<%= game.gambar %>" class="card-img-top mt-1 img-thumbnail" alt="...">
                 </div>
@@ -41,30 +52,42 @@
                 </div>
             </div>
 
-            <div class="ms-auto col-lg-6 border border-2 border-primary">
+            <div class="ms-auto col-lg-6 ">
                 <div class="accordion" id="accordionPanelsStayOpenExample">
                     <div class="accordion-item">
-                      <h2 class="accordion-header">
-                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
-                          Masukkan Player ID
-                        </button>
-                      </h2>
-                      <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
-                        <div class="accordion-body">
-                            <div class="form-floating mb-3">
-                                <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" required>
-                                <label for="floatingInput">Masukkan Player ID</label>
-                                <small class="text-warning">*) Bagian ini harus diisi
-                                </small>
+                        <h2 class="accordion-header">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                                <i class="fa-solid fa-1 me-2" style="color: #88c4e2;"></i>Masukkan Player Tag
+                            </button>
+                        </h2>
+                        <form action="/topup_pay" method="POST">
+                            <input type="hidden" value="<%= game.nama_game %>" name="nama_game">
+
+                        <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
+                            <div class="accordion-body">
+                                <div class="form-floating col-lg-8 mb-3">
+                                    <input type="text" class="form-control" id="floatingInput" name="id_gameUser" placeholder="name@example.com" required>
+                                    <label for="floatingInput">Masukkan Player ID</label>
+                                    <small class="text-warning">*) Bagian ini harus diisi </small><br>
+                                    <small class="text-warning">**) panduan mengecek player tag, dapat diliat pada</small>
+                                    <button type="button" class="btn btn-link question-icon" data-bs-toggle="tooltip" data-bs-placement="top" title="Panduan">
+                                        <i class="fa-solid fa-circle-question fa-shake" style="color: #789bd9; font-size: 30px;"></i>
+                                    </button>
+                                    <div class="question-popup" style="display: none;">
+                                        <!-- Gambar panduan -->
+                                        <img src="<%= game.guide_ %>" alt="Panduan">
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                      </div>
                     </div>
+                    
 
+                    
                     <div class="accordion-item">
                         <h2 class="accordion-header">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#topUpOptions" aria-expanded="false" aria-controls="topUpOptions">
-                                Pilih Nominal Top Up
+                                <i class="fa-solid fa-2 me-2" style="color: #88c4e2;"></i>Pilih Nominal Top Up
                             </button>
                         </h2>
                         <div id="topUpOptions" class="accordion-collapse collapse">
@@ -72,7 +95,7 @@
                                 <!-- Looping through each option -->
                                 <% game.opsi_nominal_topup.forEach((option, index) => { %>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="topUpOption" id="topUpOption<%= index + 1 %>" value="<%= option.nominal %>">
+                                        <input class="form-check-input top-up-option" type="radio" name="nominal_topup" id="topUpOption<%= index + 1 %>" value="<%= option.nominal %>" data-price="<%= option.harga %>">
                                         <label class="form-check-label" for="topUpOption<%= index + 1 %>">
                                             <%= option.nominal %> - <%= option.harga %>
                                         </label>
@@ -82,29 +105,48 @@
                         </div>
                     </div>
                     
-
+                    
                     <div class="accordion-item">
-                      <h2 class="accordion-header">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
-                            Pilih pembayaran
-                        </button>
-                      </h2>
-                      <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse">
-                        <div class="accordion-body">
-
-                            <div class="list-group">
-                                <button type="button" class="list-group-item list-group-item-action active" aria-current="true"><img src="/img/other/OVO_LOGO.png" alt=""></button>
-                                <button type="button" class="list-group-item list-group-item-action"><img src="/img/other/GOPAY_LOGO.png" alt=""></button>
-                                <button type="button" class="list-group-item list-group-item-action"><img src="/img/other/DANA_LOGO.png" alt=""></button>
-                              </div>
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
+                                <i class="fa-solid fa-3 me-2" style="color: #88c4e2;"></i>Pilih pembayaran
+                            </button>
+                        </h2>
+                        <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse">
+                            <div class="accordion-body">
+                                <div class="list-group">
+                                    <label class="list-group-item list-group-item-action ovo">
+                                        <input type="radio" name="jenis_pembayaran" value="ovo">
+                                        <img src="/img/other/OVO_LOGO.png" alt="">
+                                        <span class="payment-label">OVO</span>
+                                        <span class="price-label"></span>
+                                    </label>
+                                    <label class="list-group-item list-group-item-action gopay">
+                                        <input type="radio" name="jenis_pembayaran" value="gopay">
+                                        <img src="/img/other/GOPAY_LOGO.png" alt="">
+                                        <span class="payment-label">GOPAY</span>
+                                        <span class="price-label"></span>
+                                    </label>
+                                    <label class="list-group-item list-group-item-action dana">
+                                        <input type="radio" name="jenis_pembayaran" value="dana">
+                                        <img src="/img/other/DANA_LOGO.png" alt="">
+                                        <span class="payment-label">DANA</span>
+                                        <span class="price-label"></span>
+                                    </label>
+                                </div>
+                            </div>
                         </div>
-                      </div>
                     </div>
+                    
+
+                      
+
+                    
 
                     <div class="accordion-item">
                       <h2 class="accordion-header">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseFour" aria-expanded="false" aria-controls="panelsStayOpen-collapseFour">
-                          Beli
+                            <i class="fa-solid fa-4 me-2" style="color: #88c4e2;"></i>Beli
                         </button>
                       </h2>
                       <div id="panelsStayOpen-collapseFour" class="accordion-collapse collapse">
@@ -114,23 +156,154 @@
                             </p>
 
                             <div class="form-floating mb-3">
-                                <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" required>
+                                <input type="email" class="form-control" id="floatingInput" name="alamat_email" placeholder="name@example.com" required>
                                 <label for="floatingInput">Masukkan Alamat E-Mail</label>
                                 <small class="text-warning">*) Bagian ini opsional
                                 </small>
 
                             </div>
+                            <div class="card mt-3">
+                                <div class="card-body">
+                                    <h5 class="card-title text-primary text-decoration-underline">Ringkasan Pembelian</h5>
+                                    <p class="card-text total-purchase">Total Pembelian: </p>
+                                    <input type="hidden" id="totalPriceInput" name="harga_topup">
 
-                            <div class="text-end">
-                                <button class="btn btn-primary rounded-pill">Beli Sekarang</button>
+
+
+                                    <p class="card-text payment-method">Metode Pembayaran: </p>
+                                    <div class="text-end">
+                                        <button type="submit" class="btn btn-primary rounded-pill">Beli Sekarang</button>
+                                    </div>
+                                </div>
                             </div>
+                        </form>
+
+
                         </div>
                       </div>
+
                     </div>
                   </div>
             </div>
         </div>
     </div>
+    
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const questionIcon = document.querySelector('.question-icon');
+            const questionPopup = document.querySelector('.question-popup');
+    
+            questionIcon.addEventListener('mouseenter', function() {
+                questionPopup.style.display = 'block';
+            });
+    
+            questionIcon.addEventListener('mouseleave', function() {
+                questionPopup.style.display = 'none';
+            });
+        });
+    </script>
+
+    <script>
+        const topUpOptions = document.querySelectorAll('.top-up-option');
+        topUpOptions.forEach(option => {
+            option.addEventListener('change', function() {
+                const selectedPrice = this.dataset.price;
+                const priceLabels = document.querySelectorAll('.price-label');
+                priceLabels.forEach(label => {
+                    label.textContent = selectedPrice;
+                });
+            });
+        });
+    </script>
+    
+    
+    
+      
+    <script>
+        document.querySelectorAll('.list-group-item').forEach(item => {
+        item.addEventListener('click', function() {
+            document.querySelectorAll('.list-group-item').forEach(item => {
+            item.classList.remove('active'); // Hapus kelas 'active' dari semua elemen
+            });
+            this.classList.add('active'); // Tambahkan kelas 'active' ke elemen yang diklik
+            // Jika Anda ingin menambahkan kelas 'active' ke radio yang terkait, Anda dapat melakukannya di sini
+            const radio = this.querySelector('input[type="radio"]');
+            if (radio) {
+            radio.checked = true; // Tandai radio yang terkait sebagai terpilih
+            }
+        });
+        });
+
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
     <!-- Tampilkan detail lainnya tentang game -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const topUpOptions = document.querySelectorAll('.top-up-option');
+            const paymentRadios = document.querySelectorAll('input[name="jenis_pembayaran"]');
+            const totalPurchaseText = document.querySelector('.card-text.total-purchase');
+            const paymentMethodText = document.querySelector('.card-text.payment-method');
+    
+            // Fungsi untuk mendapatkan nilai harga opsi nominal top up yang dipilih
+            function getSelectedPrice() {
+                let selectedPrice = '';
+                topUpOptions.forEach(option => {
+                    if (option.checked) {
+                        selectedPrice = option.dataset.price;
+                    }
+                });
+                return selectedPrice;
+            }
+    
+            // Fungsi untuk mendapatkan nilai opsi nominal top up yang dipilih
+            function getSelectedTopUpOption() {
+                let selectedOption = '';
+                topUpOptions.forEach(option => {
+                    if (option.checked) {
+                        selectedOption = option.value;
+                    }
+                });
+                return selectedOption;
+            }
+    
+            // Fungsi untuk mendapatkan metode pembayaran yang dipilih
+            function getSelectedPaymentMethod() {
+                let selectedPaymentMethod = '';
+                paymentRadios.forEach(radio => {
+                    if (radio.checked) {
+                        selectedPaymentMethod = radio.value;
+                    }
+                });
+                return selectedPaymentMethod;
+            }
+    
+            // Fungsi untuk memperbarui ringkasan pembelian
+            function updatePurchaseSummary() {
+                const selectedTopUpOption = getSelectedTopUpOption();
+                const selectedPaymentMethod = getSelectedPaymentMethod();
+                const selectedPrice = getSelectedPrice();
+                totalPurchaseText.textContent = 'Total Pembelian: ' + selectedTopUpOption; // Ganti dengan logika perhitungan total pembelian sesuai kebutuhan Anda
+                paymentMethodText.textContent = 'Metode Pembayaran: ' + selectedPaymentMethod;
+                // Tambahkan nilai harga ke ringkasan pembelian
+                totalPurchaseText.textContent += ' (Harga: ' + selectedPrice + ')';
+                totalPriceInput.value = selectedPrice; // Misalnya, harga total disimpan dalam input dengan id 'totalPriceInput'
+
+            }
+    
+            // Event listener untuk opsi nominal top up
+            topUpOptions.forEach(option => {
+                option.addEventListener('change', updatePurchaseSummary);
+            });
+    
+            // Event listener untuk metode pembayaran
+            paymentRadios.forEach(radio => {
+                radio.addEventListener('change', updatePurchaseSummary);
+            });
+        });
+    </script>
+    
 </body>
 </html>

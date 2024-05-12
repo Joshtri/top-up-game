@@ -3,20 +3,24 @@
 <head>
     <!-- <meta charset="UTF-8"> -->
     <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
-
+    <link rel="icon" href="/img/delta_store.png" />
 </head>
 <body data-bs-theme="dark">
     <%-include('layouts');%>
 
 
     <div class="container mt-4">
+      <h2 class="text-warning-emphasis">Delta Store</h2>
+      <span class="small text-light fst-italic">membuat anda top-up lebih semangat</span>
+      <hr>
+
         <div id="carouselExampleDark" class="carousel carousel-dark slide">
             <div class="carousel-indicators">
               <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
               <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
               <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
             </div>
-            <div class="carousel-inner border border-primary p-3 mb-3">
+            <div class="carousel-inner  p-3 mb-3">
               <div class="carousel-item active" data-bs-interval="10000">
                 <img src="/img/ads/ads-3.jpg" class="d-block mx-auto w-50" alt="...">
                 <div class="carousel-caption d-none d-md-block">
@@ -62,6 +66,7 @@
                     }
                 </style>
 
+
                 <div class="row d-flex">
                     <% games.forEach(game => { %>
                         <div class="col-md-6 col-lg-4 mb-3 ">
@@ -81,7 +86,34 @@
             </div>
         </div>
         
-        
+                    <!-- Modal -->
+      <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="staticBackdropLabel">Log In Akun</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="/login" method="post">
+              <div class="modal-body">
+
+                <div class="form-floating mb-3">
+                  <input type="email" class="form-control" name="email" id="floatingInput" placeholder="name@example.com"required>
+                  <label for="floatingInput">Email</label>
+                </div>
+
+                <div class="form-floating">
+                  <input type="password" class="form-control" name="password" id="floatingPassword" placeholder="Password"required>
+                  <label for="floatingPassword">Password</label>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                <button type="submit" class="btn btn-primary">Masuk Akun Sekarang</button>
+              </div>
+            </form>
+        </div>  
+      </div>
     </div>
 </body>
 </html>

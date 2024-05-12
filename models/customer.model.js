@@ -3,7 +3,7 @@ import sequelize from '../config/database.js';
 
 
 const Customer = sequelize.define('customer',{
-    id: {
+    id_customer: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true
@@ -12,13 +12,13 @@ const Customer = sequelize.define('customer',{
         type: DataTypes.STRING(100),
         allowNull: false
     },
-    email: {
+    email: {    
         type: DataTypes.STRING(50),
-        allowNull: true
+        allowNull: false
     },
-    phone: {
-        type: DataTypes.STRING(50),
-        allowNull: true
+    password: {
+        type: DataTypes.STRING(100),
+        allowNull: false
     }
 }, {
     tableName: 'customers',
