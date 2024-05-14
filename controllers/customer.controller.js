@@ -34,18 +34,12 @@ const CustomerController = {
             // Cari pengguna berdasarkan alamat email
             const customer = await Customer.findOne({ email });
     
-            // Jika pengguna tidak ditemukan, kirimkan respons error
-            if (!customer) {
-                throw new Error('Email tidak terdaftar');
-            }
+
     
             // Bandingkan password yang diberikan dengan password yang disimpan dalam database
             const passwordMatch = await bcrypt.compare(password, customer.password);
             
-            // Jika password tidak sesuai, kirimkan respons error
-            if (!passwordMatch) {
-                throw new Error('Password salah');
-            }
+
     
             // Simpan data pengguna ke dalam session jika autentikasi berhasil
             req.session.user = {

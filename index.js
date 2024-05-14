@@ -68,7 +68,6 @@ const __dirname = path.dirname(__filename);
 app.set('view engine', 'ejs');
 
 // Gunakan middleware untuk menyajikan file statis dari folder 'public'
-// eslint-disable-next-line no-undef
 app.use(express.static(path.join(process.cwd(), 'public')));
 app.use('/', mainRoute, customerRoute, transactionRoute);
 // Tentukan lokasi folder views
