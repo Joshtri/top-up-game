@@ -28,6 +28,9 @@ const client = redis.createClient({
   }
 });
 (async () => { await client.connect(); })();
+
+app.set('trust proxy', true);
+
 // Express Session
 app.use(
     session({
@@ -48,12 +51,12 @@ app.use(
 );
 
 connectDB();
-
 app.use(flash({ sessionKeyName: 'flashMessage' }));
 // Gunakan middleware untuk membaca JSON
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(bodyParser.json());
+app.set('trust proxy', true);
 
 
 const __filename = fileURLToPath(import.meta.url);
