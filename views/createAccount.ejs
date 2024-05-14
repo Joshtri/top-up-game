@@ -16,7 +16,23 @@
         }
     </style>
 
-
+<style>
+    /* Animasi */
+    @keyframes pointDown {
+      0%, 100% {
+        transform: translateY(0); /* Awal dan akhir: tidak bergerak */
+      }
+      50% {
+        transform: translateY(5px); /* Tengah: pindah ke bawah */
+      }
+    }
+  
+    /* Menetapkan animasi ke emoji */
+    .pointing-down {
+      display: inline-block;
+      animation: pointDown 1s ease-in-out infinite; /* Menggunakan animasi pointDown */
+    }
+  </style>
 
     <div class="container" style="padding-top: 60px;">
 
@@ -37,7 +53,7 @@
                 <form action="/login" method="POST">
                     <div class="row">
                         <div class="col-md-12">
-                            <h4>Please enter your E-Mail & password</h4>
+                            <h4><span class="pointing-down">👇</span>Gunakan E-Mail & password<span class="pointing-down">👇</span></h4>
                             <hr>
 
                             <div class="mb-3 row">
@@ -77,7 +93,7 @@
                 <form action="/post_createAccount" method="POST">
                     <div class="row">
                         <div class="col-md-12">
-                            <h4>Create your Account below</h4>
+                            <h4><span class="pointing-down">👇</span>Buat Akun Delta Store <span class="pointing-down">👇</span></h4> 
                             <hr>
                             
                             <div class="mb-3 row">

@@ -7,7 +7,7 @@
     <title><%= title %> | <%= game.nama_game%></title>
     <link rel="icon" href="/img/delta_store.png" />
 </head>
-<body data-bs-theme="dark">
+<body data-bs-theme="dark" class="animate__animated animate__fadeIn">
     <style>
         .list-group-item input[type="radio"] {
         display: none; /* Sembunyikan bulatan radio */
@@ -26,21 +26,21 @@
 
 
         <div class="row ">
-            <div class="col-lg-5 ">
+            <div class="col-lg-5 animate__animated animate__fadeInLeft">
                 <div class="card mt-1 border-0 shadow-sm mx-auto" style="width: 13rem;">
-                    <img src="<%= game.gambar %>" class="card-img-top mt-1 img-thumbnail" alt="...">
+                    <img src="<%= game.gambar %>" class="card-img-top mt-1 img-thumbnail animate__animated animate__fadeIn" alt="...">
                 </div>
                 <h1 class="badge fs-3"><%= game.nama_game %></h1>
 
                 <div class="d-grid gap-2 d-md-flex justify-content-center">
-                    <button class="btn btn-light me-md-2" type="button">pembayaran yang aman</button>
-                    <button class="btn btn-light" type="button">Layanan Pelanggan 24/7</button>
+                    <button class="btn btn-light me-md-2" type="button"><i class="fa-solid fa-certificate fa-bounce mx-1"></i>pembayaran yang aman</button>
+                    <button class="btn btn-light" type="button"><i class="fa-solid fa-headset mx-1" style="color: #344db2;"></i>Layanan Pelanggan 24/7</button>
                 </div>  
 
                 <hr>
 
                 <p><%= game.description %></p>
-                <div class="d-grid gap-2 d-md-flex justify-content-center">
+                <div class="d-grid gap-2 d-md-flex justify-content-center animate__animated animate__fadeInUp">
 
                     <a href="<%= game.link_playstore %>" target="_blank">
                         <img src="/img/other/app_store_coda.png" alt="">
@@ -51,9 +51,9 @@
                     </a>
                 </div>
             </div>
-
+            
             <% if(session && session.user) { %>
-            <div class="ms-auto col-lg-6 ">
+            <div class="ms-auto col-lg-6 animate__animated animate__fadeInRight">
                 <div class="accordion" id="accordionPanelsStayOpenExample">
                     <div class="accordion-item">
                         <h2 class="accordion-header">
@@ -183,7 +183,7 @@
                   </div>
             </div>
             <% } else { %>
-                <div class="ms-auto col-lg-6 mt-5">
+                <div class="ms-auto col-lg-6 mt-5 animate__animated animate__fadeInRight">
                     <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                 
                         <li class="nav-item mb-3">

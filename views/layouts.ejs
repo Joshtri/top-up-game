@@ -9,7 +9,7 @@
         <link rel="icon" href="/img/delta_store.png" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     </head>
-    <body>
+    <body class="">
 
         <div class="pb-5">
             <%-include('partials/header'); %>
@@ -18,6 +18,60 @@
 
         <%-include('partials/footer'); %>
         
+<script>
+  $(document).ready(function(){
+    // Membuat variabel untuk menunjukkan slide yang aktif
+    var currentIndex = 0;
+    
+    // Mendapatkan jumlah total slide
+    var totalSlides = $('.carousel-item').length;
+    
+    // Fungsi untuk menampilkan slide berikutnya dengan animasi fadeIn/fadeOut
+    function showNextSlide() {
+      // Menghapus kelas 'active' dari slide saat ini
+      $('.carousel-item').eq(currentIndex).removeClass('active');
+      
+      // Menentukan index slide berikutnya
+      currentIndex = (currentIndex + 1) % totalSlides;
+      
+      // Menambahkan kelas 'active' ke slide berikutnya dengan animasi fadeIn
+      $('.carousel-item').eq(currentIndex).addClass('active').fadeIn();
+      
+      // Memulai animasi fadeOut pada slide sebelumnya
+      $('.carousel-item').eq((currentIndex - 1 + totalSlides) % totalSlides).fadeOut();
+    }
+    
+    // Fungsi untuk menampilkan slide sebelumnya (jika diperlukan) dengan animasi fadeIn/fadeOut
+    function showPreviousSlide() {
+      // Menghapus kelas 'active' dari slide saat ini
+      $('.carousel-item').eq(currentIndex).removeClass('active');
+        
+      // Menentukan index slide sebelumnya
+      currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+      
+      // Menambahkan kelas 'active' ke slide sebelumnya dengan animasi fadeIn
+      $('.carousel-item').eq(currentIndex).addClass('active').fadeIn();
+      
+      // Memulai animasi fadeOut pada slide berikutnya
+      $('.carousel-item').eq((currentIndex + 1) % totalSlides).fadeOut();
+    }
+    
+    // Mengatur interval untuk menampilkan slide berikutnya setiap beberapa detik
+    var interval = setInterval(showNextSlide, 5000); // Ganti nilai 5000 dengan interval yang Anda inginkan (dalam milidetik)
+    
+    // Menghentikan interval saat kursor berada di atas slider
+    $('.carousel').mouseenter(function() {
+      clearInterval(interval);
+    });
+    
+    // Memulai kembali interval saat kursor meninggalkan slider
+    $('.carousel').mouseleave(function() {
+      interval = setInterval(showNextSlide, 5000); // Ganti nilai 5000 dengan interval yang Anda inginkan (dalam milidetik)
+    });
+  });
+</script>
+
+
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
     </body>
