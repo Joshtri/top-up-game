@@ -27,37 +27,24 @@ const CustomerController = {
             console.log(error);
         }
     },
-    async  loginAccount(req, res) {
+    async loginAccount(req, res) {
         try {
             const { email, password } = req.body;
-    
-            // Cari pengguna berdasarkan alamat email
-            const customer = await Customer.findOne({ email });
-    
-            // Jika pengguna tidak ditemukan, kirimkan respons error
-            if (!customer) {
-                throw new Error('Email tidak terdaftar');
-            }
-    
-            // Bandingkan password yang diberikan dengan password yang disimpan dalam database
-            const passwordMatch = await bcrypt.compare(password, customer.password);
-            
-            // Jika password tidak sesuai, kirimkan respons error
-            if (!passwordMatch) {
-                throw new Error('Password salah');
-            }
-    
-            // Simpan data pengguna ke dalam session jika autentikasi berhasil
+
+            // Panggil fungsi loginAccount dari CustomerService
+            const customer = await CustomerService.loginAccount({ email, password });
+
+            // Jika autentikasi berhasil, simpan data pengguna ke dalam session
             req.session.user = {
                 id_customer: customer.id_customer,
                 name: customer.name,
                 email: customer.email,
-                createdAt: customer.createdAt
+                createdAt : customer.createdAt
                 // Tambahkan atribut sesuai kebutuhan
             };
-    
-            // Kirimkan respons sukses ke klien dan redirect ke halaman utama
-            req.flash('infoLoginSuccess', 'Login Berhasil, Selamat Datang di Delta Store 😃😃');  
+
+            // Kirimkan respons sukses ke klien
+            await req.flash('infoLoginSuccess', 'Login Berhasil, Selamat Datang di Delta Store 😃😃');  
             res.redirect('/');
             // res.status(200).json({ message: 'Login berhasil', data: customer });
         } catch (error) {
