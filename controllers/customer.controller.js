@@ -39,10 +39,12 @@ const CustomerController = {
                 id_customer: customer.id_customer,
                 name: customer.name,
                 email: customer.email,
+                createdAt : customer.createdAt
                 // Tambahkan atribut sesuai kebutuhan
             };
 
             // Kirimkan respons sukses ke klien
+            await req.flash('infoLoginSuccess', 'Login Berhasil, Selamat Datang di Delta Store 😃😃');  
             res.redirect('/');
             // res.status(200).json({ message: 'Login berhasil', data: customer });
         } catch (error) {

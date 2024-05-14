@@ -52,6 +52,7 @@
                 </div>
             </div>
 
+            <% if(session && session.user) { %>
             <div class="ms-auto col-lg-6 ">
                 <div class="accordion" id="accordionPanelsStayOpenExample">
                     <div class="accordion-item">
@@ -156,7 +157,7 @@
                             </p>
 
                             <div class="form-floating mb-3">
-                                <input type="email" class="form-control" id="floatingInput" name="alamat_email" placeholder="name@example.com" required>
+                                <input type="email" class="form-control" id="floatingInput" name="alamat_email" value="<%= session.user.email %>" placeholder="name@example.com" required>
                                 <label for="floatingInput">Masukkan Alamat E-Mail</label>
                                 <small class="text-warning">*) Bagian ini opsional
                                 </small>
@@ -185,6 +186,58 @@
                     </div>
                   </div>
             </div>
+            <% } else { %>
+                <div class="ms-auto col-lg-6 mt-5">
+                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                
+                        <li class="nav-item mb-3">
+                            <div class="d-flex align-items-center">
+                                <span class="me-2">
+                                    <i class="fa-solid fa-percent fa-bounce fs-3" style="color: #74C0FC;"></i>
+                                </span>
+                                <div>
+                                    <p class="mb-0" style="font-size: 1.1rem;">Jadilah yang pertama mengetahui promo dan penawaran ekslusif!</p>
+                                    <!-- <p class="text-muted">Dapatkan informasi terbaru langsung di kotak masuk email Anda.</p> -->
+                                </div>
+                            </div>
+                        </li>
+        
+                        <li class="nav-item mb-3">
+                            <div class="d-flex align-items-center">
+                                <span class="me-2">
+                                    <i class="fa-solid fa-clock-rotate-left fa-spin fa-spin-reverse fs-3" style="color: #B197FC;"></i>
+                                </span>
+                                <div>
+                                    <p class="mb-0" style="font-size: 1.1rem;">Akses riwayat pesanan anda dengan mudah</p>
+                                    <!-- <p class="text-muted">Dapatkan informasi terbaru langsung di kotak masuk email Anda.</p> -->
+                                </div>
+                            </div>
+                        </li>
+        
+                        <li class="nav-item mb-3">
+                            <div class="d-flex align-items-center">
+                                <span class="me-2">
+                                    <i class="fa-solid fa-shield-halved fa-beat fs-3" style="color: #d1668b;"></i>
+                                </span>
+                                <div>
+                                    <p class="mb-0" style="font-size: 1.1rem;">Lebih cepat dan aman</p>
+                                    <!-- <p class="text-muted">Dapatkan informasi terbaru langsung di kotak masuk email Anda.</p> -->
+                                </div>
+                            </div>
+                        </li>
+        
+                        <hr>
+                                            <!-- Pengguna belum login, tampilkan tombol "Daftar" -->
+                    <li class="nav-item mt-4">
+                        <div class="d-grid gap-2 col-7 mx-auto">
+                            <a class="btn btn-light" href="/sign-up">Daftar sekarang, gratis</a>
+                            <a id="masukButton" href="/sign-up" class="btn btn-warning">Masuk</a>
+                        </div>
+                    </li>
+                
+                </div>
+
+                <% } %>
         </div>
     </div>
     

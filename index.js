@@ -4,6 +4,7 @@ import bodyParser from 'body-parser';
 import { fileURLToPath } from 'url';
 import session from 'express-session';
 import cors from 'cors';
+import flash from 'connect-flash';
 import path from 'path';
 import redis from 'redis';
 import RedisStore from 'connect-redis';
@@ -26,7 +27,7 @@ const client = redis.createClient({
     port: process.env.REDIS_PORT,
   }
 });
-(async () => { await client.connect(); })()
+(async () => { await client.connect(); })();
 // Express Session
 app.use(
     session({
@@ -48,10 +49,12 @@ app.use(
 
 connectDB();
 
+app.use(flash({ sessionKeyName: 'flashMessage' }));
 // Gunakan middleware untuk membaca JSON
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(bodyParser.json());
+
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);

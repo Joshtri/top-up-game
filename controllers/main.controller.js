@@ -27,13 +27,18 @@ const MainController = {
             // Membaca file JSON
             const jsonData = await fs.readFile(jsonFilePath, 'utf-8');
             const gamesData = JSON.parse(jsonData);
+            
+            const messageSuccessLogin = await req.flash('infoLoginSuccess');
+            const messageSuccessTransaction = await req.flash('infoTransactionSuccess');
 
             // Melanjutkan dengan me-render tampilan dengan data dari JSON
             res.render('index', {
                 title,
                 games: gamesData, // Menyertakan data game ke dalam objek yang dikirim ke tampilan
                 currentPage: req.path, // Menggunakan path saat ini sebagai nilai currentPage
-                session: req.session // Sertakan objek sesi ke dalam objek yang dikirim ke tampilan
+                session: req.session, // Sertakan objek sesi ke dalam objek yang dikirim ke tampilan
+                messageSuccessLogin,
+                messageSuccessTransaction
             });
         } catch (error) {
             console.log(error);
@@ -56,7 +61,7 @@ const MainController = {
             res.render('detail_product', { 
                 game,
                 title,
-                session: req.session // Sertakan objek sesi ke dalam objek yang dikirim ke tampilan
+                session: req.session, // Sertakan objek sesi ke dalam objek yang dikirim ke tampilan
             });
         } catch (error) {
             console.error(error);

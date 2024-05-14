@@ -53,6 +53,7 @@ const TransactionController = {
                 }
             });
 
+            await req.flash('infoTransactionSuccess', 'Proses pembelian berhasil, untuk proses pembayaran telah di kirim pada email aktif anda');
             // Return response
             res.redirect('/');
             console.log('New transaction created successfully:', newTransaction);
