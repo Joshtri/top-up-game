@@ -76,5 +76,21 @@
       {"nominal": "Twilight Pass", "harga": "Rp 150.000"}
     ],
     "guide_" : "/img/guide/ml-guide.png"
+  },
+  {
+    "id": 6,
+    "nama_game": "Genshin Impact",
+    "gambar": "/img/games/genshin.jpg",  
+    "description": "Pembayaran tersedia melalui  GoPay, OVO, dan DANA.Top up ML Diamond, Beli Genesis Crystals dan Blessings of the Welkin Moon hanya dalam hitungan detik! Cukup masukkan User ID Genshin Impact, pilih server Anda, pilih jumlah Genesis Crystals atau Welkin Moon yang Anda inginkan, selesaikan pembayaran, dan Genesis Crystals atau Welkin Moon akan secara langsung ditambahkan ke akun Genshin Impact Anda.",
+    "link_playstore": "https://play.google.com/store/apps/details?id=com.miHoYo.GenshinImpact",
+    "link_appstore": "https://apps.apple.com/us/app/genshin-impact/id1517783697", 
+    "opsi_nominal_topup":[
+      {"nominal": "8080 Genesis Crystals", "harga": "Rp 1.467.578"},
+      {"nominal": "3880 Genesis Crystals", "harga": "Rp 734.234"},
+      {"nominal": "2240 Genesis Crystals", "harga": "Rp 449.018"},
+      {"nominal": "103 Genesis Crystals", "harga": "Rp 222.045"},
+      {"nominal": "60  Genesis Crystals", "harga": "Rp 150.000"}
+    ],
+    "guide_" : "/img/guide/genshin.png"
   }
 ]
