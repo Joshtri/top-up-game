@@ -19,7 +19,7 @@ const PORT = process.env.PORT;
 import mainRoute from './routes/main.route.js';
 import customerRoute from './routes/customer.route.js';
 import transactionRoute from './routes/transaction.route.js';
-
+connectDB();
 const client = redis.createClient({
   password: process.env.REDIS_PASS,
   socket: { 
@@ -50,7 +50,9 @@ app.use(
     })
 );
 
-connectDB();
+
+app.use(cors());
+
 app.use(flash({ sessionKeyName: 'flashMessage' }));
 // Gunakan middleware untuk membaca JSON
 app.use(express.urlencoded({ extended: true }));
