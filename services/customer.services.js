@@ -1,23 +1,22 @@
 import Customer from '../models/customer.model.js';
 import bcrypt from 'bcrypt';
 
-
 const CustomerService = {
-
-    async createAccount(accountData){
+    async createAccount(accountData) {
         try {
-            const newCustomer = await Customer.create(accountData);
+            const newCustomer = new Customer(accountData);
+            await newCustomer.save();
             return newCustomer;
         } catch (error) {
             throw new Error(`Error saat membuat akun: ${error.message}`);
         }
     },
 
-    async loginAccount(accountData){
+    async loginAccount(accountData) {
         try {
             // Lakukan proses autentikasi menggunakan data akun yang diberikan
             const { email, password } = accountData;
-            const customer = await Customer.findOne({ where: { email } });
+            const customer = await Customer.findOne({ email });
 
             if (!customer) {
                 throw new Error('Email tidak terdaftar');
@@ -34,9 +33,5 @@ const CustomerService = {
         }
     }
 };
-
-
-
-
 
 export default CustomerService;

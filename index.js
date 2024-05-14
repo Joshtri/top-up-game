@@ -7,6 +7,8 @@ import cors from 'cors';
 import path from 'path';
 import redis from 'redis';
 import RedisStore from 'connect-redis';
+import connectDB from './config/database.js';
+
 
 import 'dotenv/config';
 const app = express();
@@ -43,6 +45,9 @@ app.use(
       
     })
 );
+
+connectDB();
+
 // Gunakan middleware untuk membaca JSON
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());

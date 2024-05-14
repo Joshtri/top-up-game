@@ -60,5 +60,20 @@
         {"nominal": "321 CP", "harga": "Rp 45.045"}
       ],
       "guide_" : "/img/guide/codm-gif.png"
-  }
+  },
+  {
+    "id": 5,
+    "nama_game": "Mobile Legends",
+    "gambar": "/img/games/image_87.jpg",
+    "description": "*Jumlah CP tertera sudah ditambah dengan bonus hingga 45% Top up CP CODM hanya dalam hitungan detik! Cukup masukan User ID COD Mobile Anda, pilih jumlah CP yang Anda inginkan, selesaikan pembayaran, dan CP CODM akan secara instan ditambahkan ke akun CODM Anda.Bayarlah pakai QRIS, GoPay, OVO, Bank Transfer, Indosat, Tri Indonesia, XL Axiata, Smartfren, DANA, Shopee Pay, LinkAja, Kredivo, Alfamart, Indomaret, Codacash, DOKU, dan kartu kredit. Tanpa perlu kartu kredit, registrasi ataupun log-in.Unduh dan mainkan Call of Duty Mobile sekarang!",
+    "link_playstore": "https://play.google.com/store/apps/details?id=com.activision.callofduty.shooter",
+    "link_appstore": "https://apps.apple.com/us/app/call-of-duty-mobile/id1287282214",
+    "opsi_nominal_topup":[
+      {"nominal": "31 CP", "harga": "Rp 4.505"},
+      {"nominal": "63 CP", "harga": "Rp 9.008"},
+      {"nominal": "128 CP", "harga": "Rp 18.018"},
+      {"nominal": "321 CP", "harga": "Rp 45.045"}
+    ],
+    "guide_" : "/img/guide/codm-gif.png"
+}
 ]

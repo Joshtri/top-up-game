@@ -1,15 +1,15 @@
 import fs from 'fs/promises'; // Import modul fs untuk membaca file
 import path from 'path'; // Import modul path untuk menangani path file
-import sequelize from '../config/database.js';
+import Customer from '../models/customer.model.js';
+import Transaction from '../models/transaction.model.js';
+
 const jsonFileName = 'dummyData.json';
 const jsonFilePath = new URL(`../config/${jsonFileName}`, import.meta.url);
 
-import Customer from '../models/customer.model.js';
-import Transaction from '../models/transaction.model.js';
 // Fungsi untuk melakukan sinkronisasi model dengan basis data
 async function syncDatabase() {
     try {
-        await sequelize.sync({ alter: true });
+        // Tidak diperlukan untuk Mongoose
         console.log('Model berhasil disinkronkan dengan basis data.');
     } catch (error) {
         console.error('Gagal melakukan sinkronisasi model dengan basis data:', error);
@@ -24,9 +24,6 @@ const MainController = {
             // Panggil fungsi sinkronisasi model dengan basis data
             // await syncDatabase();
 
-            const customer = await Customer.findAll();
-            const transaction = await Transaction.findAll();
-
             // Membaca file JSON
             const jsonData = await fs.readFile(jsonFilePath, 'utf-8');
             const gamesData = JSON.parse(jsonData);
@@ -36,7 +33,6 @@ const MainController = {
                 title,
                 games: gamesData, // Menyertakan data game ke dalam objek yang dikirim ke tampilan
                 currentPage: req.path, // Menggunakan path saat ini sebagai nilai currentPage
-                customer,
                 session: req.session // Sertakan objek sesi ke dalam objek yang dikirim ke tampilan
             });
         } catch (error) {

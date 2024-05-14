@@ -1,29 +1,25 @@
-import { DataTypes } from "sequelize";
-import sequelize from '../config/database.js';
+import mongoose from 'mongoose';
 
-
-const Customer = sequelize.define('customer',{
-    id_customer: {
-        type: DataTypes.INTEGER,
-        primaryKey: true,
-        autoIncrement: true
-    },
+// Skema Mongoose untuk model Customer
+const customerSchema = new mongoose.Schema({
     name: {
-        type: DataTypes.STRING(100),
-        allowNull: false
+        type: String,
+        required: true,
+        maxlength: 100
     },
-    email: {    
-        type: DataTypes.STRING(50),
-        allowNull: false
+    email: {
+        type: String,
+        required: true,
+        maxlength: 50
     },
     password: {
-        type: DataTypes.STRING(100),
-        allowNull: false
+        type: String,
+        required: true,
+        maxlength: 100
     }
-}, {
-    tableName: 'customers',
-    timestamps: true
-});
+}, { timestamps: true });
 
+// Buat model Mongoose dari skema
+const Customer = mongoose.model('Customer', customerSchema);
 
 export default Customer;

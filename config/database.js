@@ -1,33 +1,18 @@
-import { Sequelize } from 'sequelize';
-    import 'dotenv/config';
+import mongoose from "mongoose";
 
-// Mengambil nilai variabel lingkungan dari file .env
-const {
-    POSTGRES_USER, 
-    POSTGRES_PASSWORD, 
-    POSTGRES_HOST, 
-    POSTGRES_PORT, 
-    POSTGRES_DATABASE 
-// eslint-disable-next-line no-undef
-} = process.env;
 
-const sequelize = new Sequelize({
-    dialect: 'postgres',
-    host: POSTGRES_HOST,
-    port: POSTGRES_PORT,
-    username: POSTGRES_USER,
-    password: POSTGRES_PASSWORD,
-    database: POSTGRES_DATABASE
-});
+const connectDB = async () => {
+    try {
+        // eslint-disable-next-line no-undef
+        const conn = await mongoose.connect(process.env.MONGODB_URI, {
+            // Tambahkan opsi timeout di sini (misalnya, 30 detik)
+            // serverSelectionTimeoutMS: 30000,
+        });
 
-// Menguji koneksi ke database
-sequelize
-    .authenticate()
-    .then(() => {
-        console.log('Koneksi database berhasil.');
-    })
-    .catch(err => {
-        console.error('Tidak dapat terhubung ke database:', err);
-    });
+        console.log(`Database connected. ${conn.connection.host}`);
+    } catch (error) {
+        console.error(error);
+    }
+};
 
-export default sequelize;
+export default connectDB;

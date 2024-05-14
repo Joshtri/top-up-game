@@ -1,48 +1,45 @@
-// Di model Transaction
-import { DataTypes } from "sequelize";
-import sequelize from '../config/database.js';
-import Customer from './customer.model.js'; // Import model Customer
+import mongoose from 'mongoose';
 
-const Transaction = sequelize.define('Transaction',{
-    id_transaction: {
-        type: DataTypes.INTEGER,
-        primaryKey: true,
-        autoIncrement: true
-    },
+// Skema Mongoose untuk model Transaction
+const transactionSchema = new mongoose.Schema({
     id_gameUser: {
-        type: DataTypes.STRING(100),
-        allowNull: false
+        type: String,
+        required: true,
+        maxlength: 100
     },
-
     nama_game: {
-        type: DataTypes.STRING(100),
-        allowNull: false
+        type: String,
+        required: true,
+        maxlength: 100
     },
-
     nominal_topup: {
-        type: DataTypes.STRING(50),
-        allowNull: false
+        type: String,
+        required: true,
+        maxlength: 50
     },
-
-    harga_topup:{
-        type: DataTypes.STRING(50),
-        allowNull: false
+    harga_topup: {
+        type: String,
+        required: true,
+        maxlength: 50
     },
-
     jenis_pembayaran: {
-        type: DataTypes.STRING(100),
-        allowNull: false
+        type: String,
+        required: true,
+        maxlength: 100
     },
     alamat_email: {
-        type: DataTypes.STRING(100),
-        allowNull: false
+        type: String,
+        required: true,
+        maxlength: 100
+    },
+    // Tambahkan referensi ke pelanggan
+    id_customer: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Customer'
     }
-}, {
-    tableName: 'transactions',
-    timestamps: true
-});
+}, { timestamps: true });
 
-// Tambahkan relasi dengan pelanggan
-Transaction.belongsTo(Customer, { foreignKey: 'id_customer', as: 'customer' });
+// Buat model Mongoose dari skema
+const Transaction = mongoose.model('Transaction', transactionSchema);
 
 export default Transaction;
