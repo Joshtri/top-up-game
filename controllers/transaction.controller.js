@@ -27,13 +27,13 @@ const TransactionController = {
                 // For example, for Gmail:
                 service: 'gmail',
                 auth: {
-                    user: process.env.MAIL_SYSTEM, // Replace with your email
-                    pass: process.env.MAIL_PASS
+                    user: "yosrygaming@gmail.com", // Replace with your email
+                    pass: "kmhv ssuz vsdd ujob"
                 }
             });
 
             const mailOptions = {
-                from: process.env.MAIL_SYSTEM, // Replace with your email
+                from:"yosrygaming@gmail.com", // Replace with your email
                 to: alamat_email,
                 subject: 'Notification: Transaction Created',
                 text: 'Your transaction has been successfully created.',
