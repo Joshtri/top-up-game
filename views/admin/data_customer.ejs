@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Customer</title>
+</head>
+<body data-bs-theme="dark">
+    <%-include('layouts_admin');%>
+    <%-include('header_adm'); %>
+
+
+    <div class="container mt-5">
+        <h1 class="text-center">Data Customer</h1>
+        <a href="/adm/dashboard_delta" class="btn btn-light mb-3 btn-sm">Kembali</a>
+        <table class="table table-sm table-striped">
+            <thead>
+                <th>No</th>
+                <th>Name</th>
+                <th>E-Mail</th>
+                <th>Join At</th>
+            </thead>
+            <tbody>
+                <% getDataCustomer.forEach((customer, index) => { %>
+                    <tr>
+                        <td><%= index + 1 %></td>
+                        <td><%= customer.name %></td>
+                        <td><%= customer.email %></td>
+                        <td><%= new Date(customer.createdAt).toLocaleString('id-ID', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric' }) %></td>
+
+                    </tr>
+                <% }); %>
+
+
+            </tbody>
+        </table>
+    </div>
+
+</body>
+</html>

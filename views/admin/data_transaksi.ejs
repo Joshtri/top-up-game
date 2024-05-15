@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+</head>
+<body data-bs-theme="dark">
+    <%-include('layouts_admin');%>
+    <%-include('header_adm'); %>
+
+
+    <div class="container mt-5">
+        <h1 class="text-center">Data Transaksi</h1>
+        <a href="/adm/dashboard_delta" class="btn btn-light mb-3 btn-sm">Kembali</a>
+        <table class="table table-sm table-striped">
+            <thead>
+                <tr>
+                    <th>ID Game User</th>
+                    <th>Nama Game</th>
+                    <th>Nominal Topup</th>
+                    <th>Harga Topup</th>
+                    <th>Jenis Pembayaran</th>
+                    <th>Alamat Email</th>
+                    <th>status</th>
+                    <!-- Tambahkan kolom-kolom lain jika diperlukan -->
+                </tr>
+            </thead>
+            <tbody>
+                <% transactions.forEach(transaction => { %>
+                    <tr>
+                        <td>#<%= transaction.id_gameUser %></td>
+                        <td><%= transaction.nama_game %></td>
+                        <td><%= transaction.nominal_topup %></td>
+                        <td><%= transaction.harga_topup %></td>
+                        <td><%= transaction.jenis_pembayaran %></td>
+                        <td><%= transaction.alamat_email %></td>
+                        <td>✅</td>  
+                        <!-- Tambahkan baris untuk kolom-kolom lain jika diperlukan -->
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+    </div>
+
+</body>
+</html>

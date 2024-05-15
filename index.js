@@ -18,6 +18,7 @@ const PORT = process.env.PORT;
 
 import mainRoute from './routes/main.route.js';
 import customerRoute from './routes/customer.route.js';
+import adminRoute from './routes/admin.route.js';
 import transactionRoute from './routes/transaction.route.js';
 connectDB();
 const client = redis.createClient({
@@ -41,7 +42,7 @@ app.use(
       name: 'top-up-game',
       store: new RedisStore({ 
         client: client,
-        // ttl: 3600, // waktu kadaluwarsa dalam detik (misalnya 1 jam)
+        ttl: 3600, // waktu kadaluwarsa dalam detik (misalnya 1 jam)
       
       
       }),
@@ -70,8 +71,14 @@ app.set('view engine', 'ejs');
 // Gunakan middleware untuk menyajikan file statis dari folder 'public'
 app.use(express.static(path.join(process.cwd(), 'public')));
 app.use('/', mainRoute, customerRoute, transactionRoute);
+app.use('/adm', adminRoute);
 // Tentukan lokasi folder views
-app.set('views', path.join(__dirname, 'views'));
+const viewsDirectories = [
+  path.join(__dirname, 'views'),
+  path.join(__dirname, 'views', 'admin')
+];
+
+app.set('views', viewsDirectories);
 
 
 

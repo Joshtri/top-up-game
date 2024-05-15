@@ -30,7 +30,7 @@ const MainController = {
             
             const messageSuccessLogin = await req.flash('infoLoginSuccess');
             const messageSuccessTransaction = await req.flash('infoTransactionSuccess');
-            const messageSuccessLogout = req.flash('infoLogOutSucces');
+            // const messageSuccessLogout = req.flash('infoLogOutSucces');
 
             // Melanjutkan dengan me-render tampilan dengan data dari JSON
             res.render('index', {
@@ -40,7 +40,7 @@ const MainController = {
                 session: req.session, // Sertakan objek sesi ke dalam objek yang dikirim ke tampilan
                 messageSuccessLogin,
                 messageSuccessTransaction,
-                messageSuccessLogout
+                // messageSuccessLogout
             });
         } catch (error) {
             console.log(error);
@@ -91,7 +91,7 @@ const MainController = {
                     console.error('Error saat menghapus session:', err);
                     res.redirect('/'); // Redirect ke halaman dashboard jika terjadi kesalahan
                 } else {
-                    req.flash('infoLogOutSucces', 'Log out dari akun anda berhasil');
+                    // req.flash('infoLogOutSucces', 'Log out dari akun anda berhasil');
                     // Jika session berhasil dihapus, redirect ke halaman login
                     res.redirect('/');
                 }
