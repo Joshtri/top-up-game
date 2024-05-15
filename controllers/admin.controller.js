@@ -5,10 +5,10 @@ import AdminService from "../services/admin.services.js";
 const AdminController = {
     async loginAdmin(req,res){
         try {
-            const { email, password } = req.body;
+            const { username, password } = req.body;
 
             // Panggil fungsi loginAccount dari CustomerService
-            const admin = await AdminService.loginAccount({ email, password });
+            const admin = await AdminService.loginAccount({ username, password });
 
             // Jika autentikasi berhasil, simpan data pengguna ke dalam session
             req.session.admin = {
@@ -19,7 +19,7 @@ const AdminController = {
             };
 
             // Kirimkan respons sukses ke klien
-            await req.flash('infoLoginSuccess', 'Login Berhasil, Selamat Datang di SI Delta Store😃😃');  
+            // await req.flash('infoLoginSuccess', 'Login Berhasil, Selamat Datang di SI Delta Store😃😃');  
             res.redirect('/adm/dashboard_delta');
             // res.status(200).json({ message: 'Login berhasil', data: customer });
         } catch (error) {
@@ -50,9 +50,15 @@ const AdminController = {
             // Panggil fungsi dashboardPage dari AdminService
             const getData = await AdminService.dashboardPage();
 
+            // Panggil fungsi totalCustomerData dan totalCustomerTransactionData dari AdminService
+            const totalCustomers = await AdminService.totalCustomerData();
+            const totalTransactions = await AdminService.totalCustomerTransactionData();
+
             res.render('dashboard', {
                 getData,
-                title
+                title,
+                totalCustomers,
+                totalTransactions
             });
 
             console.log(getData);

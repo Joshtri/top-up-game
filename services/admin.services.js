@@ -10,8 +10,8 @@ const AdminService = {
     async loginAccount(accountData) {
         try {
             // Lakukan proses autentikasi menggunakan data akun yang diberikan
-            const { email, password } = accountData;
-            const admin = await Admin.findOne({ email });
+            const { username, password } = accountData;
+            const admin = await Admin.findOne({ username });
 
             if (!admin) {
                 throw new Error('Email tidak terdaftar');
@@ -56,6 +56,32 @@ const AdminService = {
         } catch (error) {
             // Tangani kesalahan
             throw new Error(`Error saat memuat data transaksi pelanggan: ${error.message}`);
+        }
+    },
+
+    async totalCustomerData() {
+        try {
+            // Menghitung jumlah total pelanggan menggunakan model pelanggan
+            const totalCustomers = await Customer.countDocuments();
+            
+            // Mengembalikan jumlah total pelanggan
+            return totalCustomers;
+        } catch (error) {
+            // Tangani kesalahan jika terjadi
+            throw new Error(`Error saat mengambil total data pelanggan: ${error.message}`);
+        }
+    },
+
+    async  totalCustomerTransactionData() {
+        try {
+            // Menghitung jumlah total pelanggan menggunakan model pelanggan
+            const totalCustomersTransaction = await Transaction.countDocuments();
+            
+            // Mengembalikan jumlah total pelanggan
+            return totalCustomersTransaction;
+        } catch (error) {
+            // Tangani kesalahan jika terjadi
+            throw new Error(`Error saat mengambil total data pelanggan: ${error.message}`);
         }
     }
 };
