@@ -16,6 +16,7 @@
         <table class="table table-sm table-striped">
             <thead>
                 <tr>
+                    <th>No</th>
                     <th>ID Game User</th>
                     <th>Nama Game</th>
                     <th>Nominal Topup</th>
@@ -27,8 +28,9 @@
                 </tr>
             </thead>
             <tbody>
-                <% transactions.forEach(transaction => { %>
+                <% transactions.forEach((transaction, index) => { %>
                     <tr>
+                        <td><%= index + 1 %></td>
                         <td>#<%= transaction.id_gameUser %></td>
                         <td><%= transaction.nama_game %></td>
                         <td><%= transaction.nominal_topup %></td>
